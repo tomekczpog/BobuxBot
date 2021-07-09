@@ -1,7 +1,5 @@
-import {Message} from "discord.js";
-import {Command} from "../utilities/command";
-import {CommandChecks} from "../utilities/commandchecks";
-import {CommandBase} from "./base/commandbase";
+import { Command } from "../utilities/command";
+import { CommandBase } from "./base/commandbase";
 
 /**
  * a simple command that just responds pong!

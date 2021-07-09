@@ -1,8 +1,6 @@
-import {Client, MessageMentions} from "discord.js";
-import {client} from "../..";
-import {ArgumentBase, Discord} from "../../dependencies";
-import {checks} from "../commandchecks";
-import {value} from "./argumentinfo";
+import { client } from "../..";
+import { ArgumentBase } from "../../dependencies";
+import { value } from "./argumentinfo";
 
 /**
  * This argument type checks if a provided string is a role
@@ -16,7 +14,7 @@ export class RoleArgument extends ArgumentBase {
 		const regex = /[^<@&>]/g;
 		const match = argument.match(regex);
 		if (match?.length == 1) {
-			return await client.users.fetch(match[0]) || false;
+			return (await client.users.fetch(match[0])) || false;
 		}
 		return false;
 	}

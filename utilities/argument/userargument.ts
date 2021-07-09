@@ -1,6 +1,5 @@
-import {MessageMentions} from "discord.js";
-import {client} from "../..";
-import {ArgumentBase} from "./argumentinfo";
+import { client } from "../..";
+import { ArgumentBase, value } from "./argumentinfo";
 
 /**
  * This argument type checks if a provided string is a user
@@ -10,11 +9,11 @@ export class UserArgument extends ArgumentBase {
 		super("Expected a user.");
 	}
 
-	async check(argument: string) {
+	async check(argument: string): Promise<boolean | value> {
 		const regex = /[^<@>]/g;
 		const match = argument.match(regex);
 		if (match?.length == 1) {
-			return await client.users.fetch(match[0]) || false;
+			return (await client.users.fetch(match[0])) || false;
 		}
 		return false;
 	}

@@ -1,5 +1,4 @@
-import {MessageMentions} from "discord.js";
-import {ArgumentBase} from "./argumentinfo";
+import { ArgumentBase, value } from "./argumentinfo";
 
 /**
  * This argument type checks if a provided string is a string
@@ -9,7 +8,8 @@ export class StringArgument extends ArgumentBase {
 		super("Expected a string.");
 	}
 
-	async check(argument: string) {
+	async check(argument: string): Promise<boolean | value> {
+		if (argument == null) return false;
 		return true;
 	}
 }
