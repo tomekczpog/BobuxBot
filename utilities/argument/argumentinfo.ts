@@ -1,31 +1,31 @@
-import { Channel } from "diagnostic_channel";
-import { Message, User } from "discord.js";
-import { checks } from "../commandchecks";
+import {Channel} from "diagnostic_channel";
+import {Message, User} from "discord.js";
+import {checks} from "../commandchecks";
 export type value = (User | Channel | string | number)
 
 /**
  * @class used for storing important data
  */
 export abstract class ArgumentBase {
-    
     errorMessage: string;
-    
+
     /**
      * @param name the command name
      * @param errorMessage the message that appears when the argument is invalid
      */
-    constructor(errorMessage: string) { 
-       this.errorMessage = errorMessage; 
+    constructor(errorMessage: string) {
+    	this.errorMessage = errorMessage;
     }
 
     public equals(object: string): boolean {
-        if(object == this.errorMessage)
-            return true;
-        return false;    
+    	if (object == this.errorMessage) {
+    		return true;
+    	}
+    	return false;
     }
-    
+
     public getErrorMessage(argument: string): string {
-        return `${argument} <-- ${this.errorMessage}`
+    	return `${argument} <-- ${this.errorMessage}`;
     }
 
     /**
